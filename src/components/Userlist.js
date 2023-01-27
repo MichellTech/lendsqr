@@ -6,6 +6,7 @@ import { format } from 'date-fns'
 import ReactPaginate from 'react-paginate'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import { useNavigate } from 'react-router-dom'
 
 const url = 'https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users'
 
@@ -18,6 +19,7 @@ const Userlist = () => {
   const [userEmail, setUserEmail] = useState('')
   const [userNumber, setUserNumber] = useState('')
   const [userDate, setUserDate] = useState('')
+  const navigate = useNavigate()
 
   // fetching data
 
@@ -77,7 +79,7 @@ const Userlist = () => {
   // handle serach
   const resetSearch = () => {
     setUserDate('')
-    setUserNumber(null)
+    setUserNumber('')
     setUserEmail('')
     setUserOrg('')
     setUserUsername('')
@@ -101,7 +103,17 @@ const Userlist = () => {
       setSearchModal(false)
     }
   }
-  console.log(currentItems)
+
+  // single view
+  const handleSinglePerson = (item) => {
+    // navigate(`/User/${item.userName}`, { itemid: item })
+    // console.log(item)
+    navigate(`/User/${item.userName}`, {
+      state: { name: 'king', value: [{ item }] },
+    })
+    console.log(item.userName)
+  }
+
   return (
     <>
       {loading ? (
@@ -194,15 +206,16 @@ const Userlist = () => {
                     </th>
                   </tr>
                 </thead>
-                <tbody className='bg-white py-5 overflow-x-auto  divide-y divide-gray-1'>
+                <tbody className='bg-white py-5 overflow-x-auto  divide-y divide-gray-1 cursor-pointer'>
                   {currentItems.map((item, index) => {
-                    const { createdAt, orgName, userName, profile, email } =
+                    const { id, createdAt, orgName, userName, profile, email } =
                       item
 
                     return (
                       <tr
                         key={index}
                         className='hover:bg-gray-2 text-xs md:text-sm '
+                        onClick={() => handleSinglePerson(item)}
                       >
                         <td className='px-2 py-2 '>{orgName}</td>
                         <td className='px-2 w-32 py-4 whitespace-nowrap text-left text-gray-600 font-normal'>
@@ -229,7 +242,7 @@ const Userlist = () => {
           </div>
           {/* search container */}
           {searchModal ? (
-            <div className='bg-white  rounded-md max-w-xs px-6 py-8 lg:py-12 shadow-xl  shadow-blackColor absolute left-0 top-0 z-50 '>
+            <div className='bg-white  rounded-md max-w-xs px-6 py-8 lg:py-12 shadow-xl  shadow-blackColor absolute left-0 bottom-0 z-50 '>
               <form
                 action=''
                 className='space-y-6 lg:space-y-7'
@@ -290,6 +303,7 @@ const Userlist = () => {
                   <button
                     className='border border-blackColor  rounded-md px-4 py-1 w-full '
                     onClick={() => resetSearch()}
+                    type='reset'
                   >
                     Reset
                   </button>
@@ -307,9 +321,9 @@ const Userlist = () => {
           )}
 
           {currentItems.length < 1 ? (
-            <div className='absolute  top-1/2 left-20   w-full h-full '>
+            <div className='absolute mt-20  flex justify-start items-start   w-full h-full '>
               <h1 className='font-bold text-red-500 text-2xl'>
-                No data found,Refresh Page
+                No data found, Refresh Page
               </h1>
             </div>
           ) : (
@@ -321,7 +335,7 @@ const Userlist = () => {
       {/* toast */}
       <ToastContainer />
       {/* pagination*/}
-      {currentItems.length < 1 ? (
+      {currentItems.length < 10 ? (
         ''
       ) : (
         <div className='font-sans lg:flex justify-between item-center space-y-8 lg:space-y-0'>
