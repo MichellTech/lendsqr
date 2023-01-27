@@ -10,6 +10,7 @@ import { useLocation } from 'react-router-dom'
 
 const SingleUser = () => {
   const [singleData, setSingleData] = useState(null)
+  const [verified, setVerified] = useState(false)
   const { state } = useLocation()
 
   const navigate = useNavigate()
@@ -20,7 +21,10 @@ const SingleUser = () => {
 
   // handle return
   const handleReturn = () => {
-    navigate('/dashboard')
+    setVerified(true)
+    navigate(`/dashboard`, {
+      state: { name: 'Login', value: { verified } },
+    })
   }
 
   return (
@@ -115,6 +119,167 @@ const SingleUser = () => {
                 <h1>Loans</h1>
                 <h1>Savings</h1>
                 <h1>App and System</h1>
+              </div>
+            </div>
+
+            {/* futer det ails */}
+            <div className='w-full bg-white rounded-md shadow-md px-2 sm:px-4 py-6 md:px-6  space-y-5 md:space-y-8 lg:space-y-10 overflow-hidden'>
+              {/* first */}
+              <div className='space-y-4'>
+                <h1 className='font-medium text-lightGreenColor'>
+                  Personal Information
+                </h1>
+
+                <div className='grid grid-rows-4 md:grid-rows-3 xl:grid-rows-2 grid-flow-col gap-4 md:gap-6'>
+                  {/* full name */}
+                  <div className='space-y-1'>
+                    <h1 className='font-medium'>FULL NAME</h1>
+                    <h2>
+                      {singleData?.profile.firstName}{' '}
+                      {singleData?.profile.lastName}
+                    </h2>
+                  </div>
+                  {/* Phone no */}
+                  <div className='space-y-1'>
+                    <h1 className='font-medium'>PHONE NUMBER</h1>
+                    <h2>{singleData?.profile.phoneNumber}</h2>
+                  </div>
+                  {/* email */}
+                  <div className='space-y-1'>
+                    <h1 className='font-medium'>Email Address</h1>
+                    <h2>{singleData?.email}</h2>
+                  </div>
+                  {/* bvn */}
+                  <div className='space-y-1'>
+                    <h1 className='font-medium'>BVN</h1>
+                    <h2>{singleData?.profile.bvn}</h2>
+                  </div>
+                  {/* Gender */}
+                  <div className='space-y-1'>
+                    <h1 className='font-medium'>GENDER</h1>
+                    <h2>{singleData?.profile.gender}</h2>
+                  </div>
+                  {/* Maital status */}
+                  <div className='space-y-1'>
+                    <h1 className='font-medium'>MARITAL STATUS</h1>
+                    <h2>Single</h2>
+                  </div>
+                  {/* children */}
+                  <div className='space-y-1'>
+                    <h1 className='font-medium'>CHILDREN</h1>
+                    <h2>NONE</h2>
+                  </div>
+                  {/* apartment */}
+                  <div className='space-y-1'>
+                    <h1 className='font-medium'>APARTMENT</h1>
+                    <h2>Parents Apartment</h2>
+                  </div>
+                </div>
+              </div>
+              {/* diver */}
+              <div className='w-full h-[2px] bg-black'></div>
+              {/* second */}
+              <div className='space-y-4'>
+                <h1 className='font-medium text-lightGreenColor'>
+                  Education and Employment
+                </h1>
+
+                <div className='grid grid-rows-4 md:grid-rows-3 xl:grid-rows-2 grid-flow-col gap-4 md:gap-6'>
+                  {/* EDucation */}
+                  <div className='space-y-1'>
+                    <h1 className='font-medium'>LEVEL OF EDUCATION</h1>
+                    <h2>{singleData?.education.level}</h2>
+                  </div>
+                  {/* Phone no */}
+                  <div className='space-y-1'>
+                    <h1 className='font-medium'>EMPLOYMENT STATUS</h1>
+                    <h2>{singleData?.education.employmentStatus}</h2>
+                  </div>
+                  {/* email */}
+                  <div className='space-y-1'>
+                    <h1 className='font-medium'>SECTOR OF EMPLOYMENT</h1>
+                    <h2>{singleData?.education.sector}</h2>
+                  </div>
+                  {/* bvn */}
+                  <div className='space-y-1'>
+                    <h1 className='font-medium'>DURATION OF EMPLOYMENT</h1>
+                    <h2>{singleData?.education.duration}</h2>
+                  </div>
+                  {/* Gender */}
+                  <div className='space-y-1'>
+                    <h1 className='font-medium'>OFFICE EMAIL</h1>
+                    <h2>{singleData?.education.officeEmail}</h2>
+                  </div>
+                  {/* Maital status */}
+                  <div className='space-y-1'>
+                    <h1 className='font-medium'>MPNTHLY INCOME</h1>
+                    <h2>
+                      $ {singleData?.education.monthlyIncome[0]} - $
+                      {singleData?.education.monthlyIncome[1]}{' '}
+                    </h2>
+                  </div>
+                  {/* children */}
+                  <div className='space-y-1'>
+                    <h1 className='font-medium'>LOAN REPAYMENT</h1>
+                    <h2> $ {singleData?.education.loanRepayment}</h2>
+                  </div>
+                </div>
+              </div>
+              {/* diver */}
+              <div className='w-full h-[2px] bg-black'></div>
+              {/* third */}
+              <div className='space-y-4'>
+                <h1 className='font-medium text-lightGreenColor'>Socials</h1>
+
+                <div className='grid grid-rows-1 grid-flow-col gap-4 md:gap-6'>
+                  {/* EDucation */}
+                  <div className='space-y-1'>
+                    <h1 className='font-medium'>FACEBOOK</h1>
+                    <h2>{singleData?.socials.facebook}</h2>
+                  </div>
+                  {/* Phone no */}
+                  <div className='space-y-1'>
+                    <h1 className='font-medium'>TWITTER</h1>
+                    <h2>{singleData?.socials.twitter}</h2>
+                  </div>
+                  {/* email */}
+                  <div className='space-y-1'>
+                    <h1 className='font-medium'>INSTAGRAM</h1>
+                    <h2>{singleData?.socials.instagram}</h2>
+                  </div>
+                </div>
+              </div>
+              {/* diver */}
+              <div className='w-full h-[2px] bg-black'></div>
+              {/* fourth */}
+              <div className='space-y-4'>
+                <h1 className='font-medium text-lightGreenColor'>Guarantor</h1>
+
+                <div className='grid grid-rows-1 grid-flow-col gap-4 md:gap-6'>
+                  {/* EDucation */}
+                  <div className='space-y-1'>
+                    <h1 className='font-medium'>FULL NAME</h1>
+                    <h2>
+                      {singleData?.guarantor.firstName}{' '}
+                      {singleData?.guarantor.lastName}
+                    </h2>
+                  </div>
+                  {/* Phone no */}
+                  <div className='space-y-1'>
+                    <h1 className='font-medium'>PHONE NUMBER</h1>
+                    <h2>{singleData?.guarantor.phoneNumber}</h2>
+                  </div>
+                  {/* email */}
+                  <div className='space-y-1'>
+                    <h1 className='font-medium'>GENDER</h1>
+                    <h2>{singleData?.guarantor.gender}</h2>
+                  </div>
+                  {/* email */}
+                  <div className='space-y-1'>
+                    <h1 className='font-medium'>ADDRESS</h1>
+                    <h2>{singleData?.guarantor.address}</h2>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

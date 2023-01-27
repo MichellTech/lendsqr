@@ -10,6 +10,7 @@ const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [showpassword, setShowpassword] = useState(false)
+  const [verified, setVerified] = useState(false)
   const navigate = useNavigate()
 
   // function that handles the login
@@ -27,12 +28,16 @@ const Login = () => {
       toast.error('Password length must be more than 8 characters')
       return
     } else {
+      setVerified(true)
       toast.success('Login successfull')
       return setTimeout(() => {
-        navigate('/dashboard')
+        navigate(`/dashboard`, {
+          state: { name: 'Login', value: { verified } },
+        })
       }, 3000)
     }
   }
+
   return (
     <section className='login-center space-y-24 lg:space-y-20 min-h-screen flex flex-col justify-center '>
       {/* logo */}
