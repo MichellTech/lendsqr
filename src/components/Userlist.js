@@ -19,6 +19,7 @@ const Userlist = () => {
   const [userEmail, setUserEmail] = useState('')
   const [userNumber, setUserNumber] = useState('')
   const [userDate, setUserDate] = useState('')
+  const [verified, setVerified] = useState(false)
   const navigate = useNavigate()
 
   // fetching data
@@ -106,8 +107,7 @@ const Userlist = () => {
 
   // single view
   const handleSinglePerson = (item) => {
-    // navigate(`/User/${item.userName}`, { itemid: item })
-    // console.log(item)
+    setVerified(true)
     navigate(`/User/${item.userName}`, {
       state: { name: 'king', value: [{ item }] },
     })
