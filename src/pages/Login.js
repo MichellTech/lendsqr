@@ -39,72 +39,77 @@ const Login = () => {
   }
 
   return (
-    <section className='login-center space-y-24 lg:space-y-20 min-h-screen flex flex-col justify-center '>
-      {/* logo */}
-      <div className='flex justify-center lg:justify-start '>
-        <img src={logo} alt='logo' />
-      </div>
-      {/* login details */}
-      <div className=' lg:flex justify-between items-center '>
-        {/* login images */}
-        <div className='hidden lg:block lg:w-1/2  '>
-          <img src={signup} alt='signup' className='w-full' />
+    <div
+      className='h-full flex flex-col lg:flex-row
+     justify-center items-center  '
+    >
+      {/* login images */}
+      <div className='hidden lg:block lg:w-1/2  space-y-20 lg:px-6 '>
+        {/* logo */}
+        <div className='flex justify-center lg:justify-start '>
+          <img src={logo} alt='logo' />
         </div>
-        {/* login group */}
-        <div className='space-y-10 lg:space-y-16 lg:w-1/2   '>
-          {/* header */}
-          <div className='text-center lg:text-left space-y-2 w-10/12 lg:w-8/12 font-sans mx-auto'>
-            <h1 className='font-sans text-4xl font-extrabold  text-blueColor'>
-              Welcome!
-            </h1>
-            <h1 className='font-sans text-blackColor'>
-              Enter details to login
+        {/* image */}
+        <img src={signup} alt='signup' className='w-full' />
+      </div>
+      {/* login info */}
+      <div className='flex-col flex justify-center items-center space-y-10 lg:space-y-16 lg:w-1/2 ] lg:shadow-inner lg:shadow-lg    h-screen w-full px-8 lg:px-4'>
+        {/* header */}
+        <div className='text-center lg:text-left space-y-2 w-10/12 lg:w-8/12 font-sans mx-auto'>
+          {/* logo */}
+          <div className='flex justify-center lg:justify-start mb-16 lg:hidden'>
+            <img src={logo} alt='logo' />
+          </div>
+          <h1 className='font-sans text-3xl sm:text-4xl font-extrabold  text-blueColor'>
+            Welcome!
+          </h1>
+          <h1 className='font-sans text-blackColor text-sm sm:text-base'>
+            Enter details to login
+          </h1>
+        </div>
+        {/* form */}
+        <form
+          className='w-10/12 lg:w-8/12 font-sans mx-auto'
+          onSubmit={handleLogin}
+        >
+          <input
+            type='email'
+            placeholder='Email'
+            className='border border-blackColor rounded-md px-4 py-2 w-full placeholder:text-blackColor'
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          {/* password */}
+          <div className='relative'>
+            <input
+              type={showpassword ? 'text' : 'password'}
+              placeholder='Password'
+              className='border border-blackColor rounded-md px-4 py-2 w-full placeholder:text-blackColor mt-8 '
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <h1
+              className='text-lightGreenColor font-medium mt-3 absolute top-7 right-4 text-sm cursor-pointer'
+              onClick={() => setShowpassword(!showpassword)}
+            >
+              {showpassword ? 'hide' : 'show'}
             </h1>
           </div>
-          {/* form */}
-          <form
-            className='w-10/12 lg:w-8/12 font-sans mx-auto'
-            onSubmit={handleLogin}
+          {/* forgpot password */}
+          <h1 className='text-lightGreenColor font-medium mt-3  text-sm'>
+            Forgot Password ?
+          </h1>
+          {/* submit */}
+          <button
+            type='submit'
+            className='bg-lightGreenColor text-white w-full px-4 py-2 font-sans font-semibold rounded-md mt-8'
           >
-            <input
-              type='email'
-              placeholder='Email'
-              className='border border-blackColor rounded-sm px-4 py-2 w-full placeholder:text-blackColor'
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            {/* password */}
-            <div className='relative'>
-              <input
-                type={showpassword ? 'text' : 'password'}
-                placeholder='Password'
-                className='border border-blackColor rounded-sm px-4 py-2 w-full placeholder:text-blackColor mt-8 '
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              <h1
-                className='text-lightGreenColor font-medium mt-3 absolute top-7 right-4 text-sm cursor-pointer'
-                onClick={() => setShowpassword(!showpassword)}
-              >
-                {showpassword ? 'hide' : 'show'}
-              </h1>
-            </div>
-            {/* forgpot password */}
-            <h1 className='text-lightGreenColor font-medium mt-3  text-sm'>
-              Forgot Password ?
-            </h1>
-            {/* submit */}
-            <button
-              type='submit'
-              className='bg-lightGreenColor text-white w-full px-4 py-2 font-sans font-semibold rounded-sm mt-8'
-            >
-              Login
-            </button>
-            <ToastContainer />
-          </form>
-        </div>
+            Login
+          </button>
+          <ToastContainer />
+        </form>
       </div>
-    </section>
+    </div>
   )
 }
 

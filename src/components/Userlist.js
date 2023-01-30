@@ -121,11 +121,11 @@ const Userlist = () => {
           <Loader />
         </div>
       ) : (
-        <div className='bg-white rounded-sm shadow-sm px-6 py-6 md:py-8 font-sans relative  overflow-x-scroll 2xl:overflow-hidden min-h-screen '>
+        <div className='bg-white rounded-sm shadow-sm px-6 py-6 md:py-10 font-sans relative h-screen overflow-auto   2xl:overflow-hidden  '>
           {/* data display */}
           <div className='w-full '>
-            <div className='w-full overflow-x-scroll'>
-              <table className='min-w-max w-full divide-y  overflow-auto relative divide-gray-1 '>
+            <div className='w-full overflow-x-auto'>
+              <table className='min-w-max w-full divide-y  overflow-x-auto relative divide-gray-1 '>
                 <thead className='text-xs  text-left text-gray-700 uppercase'>
                   <tr>
                     <th
@@ -206,7 +206,7 @@ const Userlist = () => {
                     </th>
                   </tr>
                 </thead>
-                <tbody className='bg-white py-5 overflow-x-auto  divide-y divide-gray-1 cursor-pointer'>
+                <tbody className='bg-white py-5 overflow-x-scroll  divide-y divide-gray-1 cursor-pointer'>
                   {currentItems.map((item, index) => {
                     const { id, createdAt, orgName, userName, profile, email } =
                       item
@@ -242,10 +242,10 @@ const Userlist = () => {
           </div>
           {/* search container */}
           {searchModal ? (
-            <div className='bg-white  rounded-md max-w-xs px-6 py-8 lg:py-12 shadow-xl  shadow-blackColor absolute left-0 bottom-0 z-50 '>
+            <div className='bg-white h-[70rem] overflow-y-auto  rounded-md max-w-xs px-6 py-4 lg:py-8 shadow-xl  shadow-blackColor absolute z-10 left-0 top-20  '>
               <form
                 action=''
-                className='space-y-6 lg:space-y-7'
+                className='space-y-4 lg:space-y-5'
                 onSubmit={handleSearch}
               >
                 <div className='space-y-2'>

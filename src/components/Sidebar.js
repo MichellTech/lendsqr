@@ -16,9 +16,15 @@ import service from '../images/service.png'
 import servicea from '../images/servicea.png'
 import statements from '../images/statements.png'
 import reports from '../images/reports.png'
+import logout from '../images/logout.png'
 import pref from '../images/pref.png'
 import audit from '../images/audit.png'
+import { useNavigate } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
 const Sidebar = () => {
+  const navigate = useNavigate()
   const data = {
     customers: {
       info: [
@@ -128,12 +134,19 @@ const Sidebar = () => {
       ],
     },
   }
-
+  // handle Logout
+  const handleLogout = () => {
+    toast.success('Logining Out')
+    return setTimeout(() => {
+      navigate(`/`)
+    }, 3000)
+  }
   return (
     <>
-      <div className='space-y-4 '>
+      <ToastContainer />
+      <div className='space-y-4  '>
         {/* organization */}
-        <div className='w-full py-3 text-left font-sans text-xs flex items-center gap-4  '>
+        <div className='w-full py-3 text-left font-sans text-xs flex items-center gap-4 px-6 '>
           <img src={briefcase} alt='briefcase' />
           <div className='flex items-center gap-2'>
             <h1 className='font-semibold text-sm'>Switch Organization</h1>
@@ -141,7 +154,7 @@ const Sidebar = () => {
           </div>
         </div>
         {/* Dashboard */}
-        <div className='w-full py-3 text-left font-sans text-xs flex items-center gap-4  '>
+        <div className='w-full py-3 text-left font-sans text-xs flex items-center gap-4 px-6  '>
           <img src={home} alt='briefcase' />
           <div className='flex items-center gap-2'>
             <h1 className='font-semibold text-sm'>Dashboard</h1>
@@ -149,29 +162,29 @@ const Sidebar = () => {
         </div>
         {/* customers */}
         <div>
-          <div className='w-full py-3 text-left font-sans text-xs flex items-center gap-4  '>
+          <div className='w-full py-3 text-left font-sans text-xs flex items-center gap-4 px-6 '>
             <div className='flex items-center gap-2'>
               <h1 className='font-semibold text-sm'>Customers</h1>
             </div>
           </div>
-          {data.customers.info.map((item) => {
-            const { id, name, img } = item
-            return (
-              <div
-                key={item.id}
-                className='w-full py-3 text-left font-sans text-xs flex items-center gap-4  '
-              >
-                <img src={item.img} alt={item.name} className='w-4' />
-                <div className='flex items-center gap-2'>
-                  <h1 className='font-medium  '>{item.name}</h1>
-                </div>
+          <div>
+            <div className='w-full py-3 text-left font-sans text-xs flex items-center gap-4 bg-lightGreenColor bg-opacity-20 text-blackColor px-6 border-l-4 border-l border-lightGreenColor '>
+              <img src={data.customers.info[0].img} alt='' className='w-4' />
+              <div className='flex items-center gap-2'>
+                <h1 className='font-medium  '>{data.customers.info[0].name}</h1>
               </div>
-            )
-          })}
+            </div>
+            <div className='w-full py-3 text-left font-sans text-xs flex items-center gap-4  px-6 '>
+              <img src={data.customers.info[1].img} alt='' className='w-4' />
+              <div className='flex items-center gap-2'>
+                <h1 className='font-medium  '>{data.customers.info[1].name}</h1>
+              </div>
+            </div>
+          </div>
         </div>
         {/* Businesses */}
         <div>
-          <div className='w-full py-3 text-left font-sans text-xs flex items-center gap-4  '>
+          <div className='w-full py-3 text-left font-sans text-xs flex items-center gap-4 px-6 '>
             <div className='flex items-center gap-2'>
               <h1 className='font-semibold text-sm'>Businesses</h1>
             </div>
@@ -181,7 +194,7 @@ const Sidebar = () => {
             return (
               <div
                 key={item.id}
-                className='w-full py-3 text-left font-sans text-xs flex items-center gap-4  '
+                className='w-full py-3 text-left font-sans text-xs flex items-center gap-4  px-6 '
               >
                 <img src={item.img} alt={item.name} className='w-4' />
                 <div className='flex items-center gap-2'>
@@ -193,7 +206,7 @@ const Sidebar = () => {
         </div>
         {/* settings */}
         <div>
-          <div className='w-full py-3 text-left font-sans text-xs flex items-center gap-4  '>
+          <div className='w-full py-3 text-left font-sans text-xs flex items-center gap-4 px-6 '>
             <div className='flex items-center gap-2'>
               <h1 className='font-semibold text-sm'>SETTINGS</h1>
             </div>
@@ -203,7 +216,7 @@ const Sidebar = () => {
             return (
               <div
                 key={item.id}
-                className='w-full py-3 text-left font-sans text-xs flex items-center gap-4  '
+                className='w-full py-3 text-left font-sans text-xs flex items-center gap-4 px-6  '
               >
                 <img src={item.img} alt={item.name} className='w-4' />
                 <div className='flex items-center gap-2'>
@@ -214,6 +227,17 @@ const Sidebar = () => {
           })}
         </div>
       </div>
+      {/* log out */}
+      <div className='mt-16 space-y-6'>
+        <div className='w-full h-[1.5px] bg-blackColor'></div>
+        <div className='w-full py-3 text-left font-sans text-xs flex items-center gap-4  px-6 cursor-pointer  '>
+          <img src={logout} alt='' />
+          <h1 className='' onClick={() => handleLogout()}>
+            Logout
+          </h1>
+        </div>
+      </div>
+      <h1 className='mt-6 px-6 font-sans text-xs'>v1.2.0</h1>
     </>
   )
 }

@@ -31,7 +31,7 @@ const SingleUser = () => {
     <>
       <Navbar />
       <div className='flex justify-start bg-[#FBFBFB] gap-10'>
-        <div className='font-sans  hidden lg:block bg-white px-6 py-10 shadow-blueColor shadow-md   '>
+        <div className='font-sans  hidden lg:block bg-white  py-10 shadow-blueColor shadow-md   '>
           <Sidebar />
         </div>
         <div className='font-sans min-h-screen w-full  px-4 md:px-6 2xl:px-8 py-8  lg:py-10 2xl:py-12 space-y-10 overflow-hidden'>
@@ -48,7 +48,7 @@ const SingleUser = () => {
               </button>
             </div>
             {/* userDeatails */}
-            <div className=' flex justify-between items-center '>
+            <div className=' flex justify-between items-center overflow-x '>
               <h1 className='font-bold text-xl'>User Details</h1>
               {/* button */}
               <div className='flex items-center gap-4'>
@@ -62,15 +62,15 @@ const SingleUser = () => {
             </div>
 
             {/* bio- data */}
-            <div className='w-full bg-white rounded-md shadow-md px-2 md:px-6 pt-8 overflow-x-scroll space-y-8 md:space-y-12 lg:space-y-16 md:overflow-hidden lg:overflow-x-scroll 2xl:overflow-hidden '>
+            <div className='w-full bg-white rounded-md shadow-md px-6 md:px-6 pt-8 overflow-x-scroll space-y-8 md:space-y-12 lg:space-y-16 md:overflow-hidden lg:overflow-x-scroll 2xl:overflow-hidden '>
               {/* first data */}
-              <div className='flex items-center gap-4 lg:gap-8'>
+              <div className='flex items-center gap-4 lg:gap-8 w-max'>
                 {/* pics */}
                 <div className='flex items-start gap-3 lg:gap-8'>
                   <img
                     src={singleData?.profile.avatar}
                     alt=''
-                    className='rounded-full w-14 md:w-24 lg:w-max'
+                    className='rounded-full w-20 md:w-24 lg:w-max'
                   />
                 </div>
                 <div className=''>
@@ -123,7 +123,7 @@ const SingleUser = () => {
             </div>
 
             {/* futer det ails */}
-            <div className='w-full bg-white rounded-md shadow-md px-2 sm:px-4 py-6 md:px-6  space-y-5 md:space-y-8 lg:space-y-10 overflow-hidden'>
+            <div className='w-full bg-white rounded-md shadow-md px-6 py-6   space-y-5 md:space-y-8 lg:space-y-10 overflow-hidden font-sans'>
               {/* first */}
               <div className='space-y-4'>
                 <h1 className='font-medium text-lightGreenColor'>
@@ -133,46 +133,64 @@ const SingleUser = () => {
                 <div className='grid grid-rows-4 md:grid-rows-3 xl:grid-rows-2 grid-flow-col gap-4 md:gap-6'>
                   {/* full name */}
                   <div className='space-y-1'>
-                    <h1 className='font-medium'>FULL NAME</h1>
-                    <h2>
+                    <h1 className='font-medium text-sm lg:text-base'>
+                      FULL NAME
+                    </h1>
+                    <h2 className='text-xs lg:text-sm'>
                       {singleData?.profile.firstName}{' '}
                       {singleData?.profile.lastName}
                     </h2>
                   </div>
                   {/* Phone no */}
                   <div className='space-y-1'>
-                    <h1 className='font-medium'>PHONE NUMBER</h1>
-                    <h2>{singleData?.profile.phoneNumber}</h2>
+                    <h1 className='font-medium text-sm lg:text-base'>
+                      PHONE NUMBER
+                    </h1>
+                    <h2 className='text-xs lg:text-sm'>
+                      {singleData?.profile.phoneNumber}
+                    </h2>
                   </div>
                   {/* email */}
                   <div className='space-y-1'>
-                    <h1 className='font-medium'>Email Address</h1>
-                    <h2>{singleData?.email}</h2>
+                    <h1 className='font-medium text-sm lg:text-base'>
+                      Email Address
+                    </h1>
+                    <h2 className='text-xs lg:text-sm'>{singleData?.email}</h2>
                   </div>
                   {/* bvn */}
                   <div className='space-y-1'>
-                    <h1 className='font-medium'>BVN</h1>
-                    <h2>{singleData?.profile.bvn}</h2>
+                    <h1 className='font-medium text-sm lg:text-base'>BVN</h1>
+                    <h2 className='text-xs lg:text-sm'>
+                      {singleData?.profile.bvn}
+                    </h2>
                   </div>
                   {/* Gender */}
                   <div className='space-y-1'>
-                    <h1 className='font-medium'>GENDER</h1>
-                    <h2>{singleData?.profile.gender}</h2>
+                    <h1 className='font-medium text-sm lg:text-base'>GENDER</h1>
+                    <h2 className='text-xs lg:text-sm'>
+                      {singleData?.profile.gender}
+                    </h2>
                   </div>
                   {/* Maital status */}
                   <div className='space-y-1'>
-                    <h1 className='font-medium'>MARITAL STATUS</h1>
-                    <h2>Single</h2>
+                    <h1 className='font-medium text-sm lg:text-base'>
+                      MARITAL STATUS
+                    </h1>
+                    <h2 className='text-xs lg:text-sm'>Single</h2>
                   </div>
                   {/* children */}
                   <div className='space-y-1'>
-                    <h1 className='font-medium'>CHILDREN</h1>
-                    <h2>NONE</h2>
+                    <h1 className='font-medium text-sm lg:text-base'>
+                      CHILDREN
+                    </h1>
+                    <h2 className='text-xs lg:text-sm'>NONE</h2>
                   </div>
                   {/* apartment */}
                   <div className='space-y-1'>
-                    <h1 className='font-medium'>APARTMENT</h1>
-                    <h2>Parents Apartment</h2>
+                    <h1 className='font-medium text-sm lg:text-base'>
+                      APARTMENT
+                    </h1>
+                    <h2 className='text-xs lg:text-sm'>Parents Apartment</h2>
                   </div>
                 </div>
               </div>
@@ -180,48 +198,75 @@ const SingleUser = () => {
               <div className='w-full h-[2px] bg-black'></div>
               {/* second */}
               <div className='space-y-4'>
-                <h1 className='font-medium text-lightGreenColor'>
+                <h1 className='font-medium text-lightGreenColor '>
                   Education and Employment
                 </h1>
 
                 <div className='grid grid-rows-4 md:grid-rows-3 xl:grid-rows-2 grid-flow-col gap-4 md:gap-6'>
                   {/* EDucation */}
                   <div className='space-y-1'>
-                    <h1 className='font-medium'>LEVEL OF EDUCATION</h1>
-                    <h2>{singleData?.education.level}</h2>
+                    <h1 className='font-medium text-sm lg:text-base'>
+                      LEVEL OF EDUCATION
+                    </h1>
+                    <h2 className='text-xs lg:text-sm'>
+                      {singleData?.education.level}
+                    </h2>
                   </div>
                   {/* Phone no */}
                   <div className='space-y-1'>
-                    <h1 className='font-medium'>EMPLOYMENT STATUS</h1>
-                    <h2>{singleData?.education.employmentStatus}</h2>
+                    <h1 className='font-medium text-sm lg:text-base'>
+                      EMPLOYMENT STATUS
+                    </h1>
+                    <h2 className='text-xs lg:text-sm'>
+                      {singleData?.education.employmentStatus}
+                    </h2>
                   </div>
                   {/* email */}
                   <div className='space-y-1'>
-                    <h1 className='font-medium'>SECTOR OF EMPLOYMENT</h1>
-                    <h2>{singleData?.education.sector}</h2>
+                    <h1 className='font-medium text-sm lg:text-base'>
+                      SECTOR OF EMPLOYMENT
+                    </h1>
+                    <h2 className='text-xs lg:text-sm'>
+                      {singleData?.education.sector}
+                    </h2>
                   </div>
                   {/* bvn */}
                   <div className='space-y-1'>
-                    <h1 className='font-medium'>DURATION OF EMPLOYMENT</h1>
-                    <h2>{singleData?.education.duration}</h2>
+                    <h1 className='font-medium text-sm lg:text-base'>
+                      DURATION OF EMPLOYMENT
+                    </h1>
+                    <h2 className='text-xs lg:text-sm'>
+                      {singleData?.education.duration}
+                    </h2>
                   </div>
                   {/* Gender */}
                   <div className='space-y-1'>
-                    <h1 className='font-medium'>OFFICE EMAIL</h1>
-                    <h2>{singleData?.education.officeEmail}</h2>
+                    <h1 className='font-medium text-sm lg:text-base'>
+                      OFFICE EMAIL
+                    </h1>
+                    <h2 className='text-xs lg:text-sm'>
+                      {singleData?.education.officeEmail}
+                    </h2>
                   </div>
                   {/* Maital status */}
                   <div className='space-y-1'>
-                    <h1 className='font-medium'>MPNTHLY INCOME</h1>
-                    <h2>
+                    <h1 className='font-medium text-sm lg:text-base'>
+                      MONTHLY INCOME
+                    </h1>
+                    <h2 className='text-xs lg:text-sm'>
                       $ {singleData?.education.monthlyIncome[0]} - $
                       {singleData?.education.monthlyIncome[1]}{' '}
                     </h2>
                   </div>
                   {/* children */}
                   <div className='space-y-1'>
-                    <h1 className='font-medium'>LOAN REPAYMENT</h1>
-                    <h2> $ {singleData?.education.loanRepayment}</h2>
+                    <h1 className='font-medium text-sm lg:text-base'>
+                      LOAN REPAYMENT
+                    </h1>
+                    <h2 className='text-xs lg:text-sm'>
+                      {' '}
+                      $ {singleData?.education.loanRepayment}
+                    </h2>
                   </div>
                 </div>
               </div>
@@ -234,18 +279,30 @@ const SingleUser = () => {
                 <div className='grid grid-rows-1 grid-flow-col gap-4 md:gap-6'>
                   {/* EDucation */}
                   <div className='space-y-1'>
-                    <h1 className='font-medium'>FACEBOOK</h1>
-                    <h2>{singleData?.socials.facebook}</h2>
+                    <h1 className='font-medium text-sm lg:text-base'>
+                      FACEBOOK
+                    </h1>
+                    <h2 className='text-xs lg:text-sm'>
+                      {singleData?.socials.facebook}
+                    </h2>
                   </div>
                   {/* Phone no */}
                   <div className='space-y-1'>
-                    <h1 className='font-medium'>TWITTER</h1>
-                    <h2>{singleData?.socials.twitter}</h2>
+                    <h1 className='font-medium text-sm lg:text-base'>
+                      TWITTER
+                    </h1>
+                    <h2 className='text-xs lg:text-sm'>
+                      {singleData?.socials.twitter}
+                    </h2>
                   </div>
                   {/* email */}
                   <div className='space-y-1'>
-                    <h1 className='font-medium'>INSTAGRAM</h1>
-                    <h2>{singleData?.socials.instagram}</h2>
+                    <h1 className='font-medium text-sm lg:text-base'>
+                      INSTAGRAM
+                    </h1>
+                    <h2 className='text-xs lg:text-sm'>
+                      {singleData?.socials.instagram}
+                    </h2>
                   </div>
                 </div>
               </div>
@@ -258,26 +315,38 @@ const SingleUser = () => {
                 <div className='grid grid-rows-1 grid-flow-col gap-4 md:gap-6'>
                   {/* EDucation */}
                   <div className='space-y-1'>
-                    <h1 className='font-medium'>FULL NAME</h1>
-                    <h2>
+                    <h1 className='font-medium text-sm lg:text-base'>
+                      FULL NAME
+                    </h1>
+                    <h2 className='text-xs lg:text-sm'>
                       {singleData?.guarantor.firstName}{' '}
                       {singleData?.guarantor.lastName}
                     </h2>
                   </div>
                   {/* Phone no */}
                   <div className='space-y-1'>
-                    <h1 className='font-medium'>PHONE NUMBER</h1>
-                    <h2>{singleData?.guarantor.phoneNumber}</h2>
+                    <h1 className='font-medium text-sm lg:text-base'>
+                      PHONE NUMBER
+                    </h1>
+                    <h2 className='text-xs lg:text-sm'>
+                      {singleData?.guarantor.phoneNumber}
+                    </h2>
                   </div>
                   {/* email */}
                   <div className='space-y-1'>
-                    <h1 className='font-medium'>GENDER</h1>
-                    <h2>{singleData?.guarantor.gender}</h2>
+                    <h1 className='font-medium text-sm lg:text-base'>GENDER</h1>
+                    <h2 className='text-xs lg:text-sm'>
+                      {singleData?.guarantor.gender}
+                    </h2>
                   </div>
                   {/* email */}
                   <div className='space-y-1'>
-                    <h1 className='font-medium'>ADDRESS</h1>
-                    <h2>{singleData?.guarantor.address}</h2>
+                    <h1 className='font-medium text-sm lg:text-base'>
+                      ADDRESS
+                    </h1>
+                    <h2 className='text-xs lg:text-sm'>
+                      {singleData?.guarantor.address}
+                    </h2>
                   </div>
                 </div>
               </div>

@@ -10,7 +10,7 @@ const Dashboard = () => {
       {/* conten */}
       <div className='flex justify-start bg-[#FBFBFB] gap-10'>
         {/* sidebar */}
-        <div className='font-sans  hidden lg:block bg-white px-6 py-10 shadow-blueColor shadow-md   '>
+        <div className='font-sans  hidden lg:block bg-white px-0 py-10 shadow-blueColor shadow-md   '>
           <Sidebar />
         </div>
         {/* user */}
